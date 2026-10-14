@@ -1,0 +1,8 @@
+Folder.GetFiles Folder: $'''C:\\Users\\USER\\Downloads''' FileFilter: $'''*''' IncludeSubfolders: False FailOnAccessDenied: True SortBy1: Folder.SortBy.NoSort SortDescending1: False SortBy2: Folder.SortBy.NoSort SortDescending2: False SortBy3: Folder.SortBy.NoSort SortDescending3: False Files=> Files
+LOOP FOREACH CurrentItem IN Files
+    IF CurrentItem.Extension = $'''.pdf''' THEN
+        File.Move Files: CurrentItem Destination: $'''C:\\Users\\USER\\Downloads\\PDFs''' IfFileExists: File.IfExists.DoNothing MovedFiles=> MovedFiles
+    ELSE IF CurrentItem.Extension = $'''.png''' THEN
+        File.Move Files: CurrentItem Destination: $'''C:\\Users\\USER\\Downloads\\Images''' IfFileExists: File.IfExists.DoNothing MovedFiles=> MovedFiles2
+    END
+END
